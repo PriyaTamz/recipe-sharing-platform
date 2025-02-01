@@ -1,16 +1,18 @@
+// import mongoose module
+const mongoose = require('mongoose');
+const { MONGODB_URI, PORT } = require('./utils/config');
 const app = require('./app');
 
-const mongoose = require('mongoose');
-const { MONGODB_URI } = require('./utils/config');
-
+// connect to the database
 mongoose.connect(MONGODB_URI)
-    .then(() => {
-        console.log("Connected to the MongoDB database");
+    .then(
+        () => {
+            console.log('Connected to MongoDB...');
 
-        app.listen(3001, () => {
-            console.log("Server is running on http://localhost:3001");
-        });
-    })
-    .catch((err) => {
-        console.log("Error connecting to the MongoDB database", err.message);
-    });
+            // start the server
+            app.listen(PORT, () => {
+                console.log(`Server running on port ${PORT}...`);
+            });
+        }
+    )
+    .catch(err => console.error('Could not connect to MongoDB...'));
