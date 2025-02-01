@@ -9,7 +9,7 @@ const authRouter = require('./routes/authRoutes');
 const app = express();
 
 app.use(cors({
-    origin: 'https://zingy-maamoul-a3e285.netlify.app/',
+    origin: 'https://zingy-maamoul-a3e285.netlify.app',
     //origin: 'http://localhost:5173',
     credentials: true,
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
